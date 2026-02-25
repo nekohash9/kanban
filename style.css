@@ -1,5 +1,9 @@
 drag-drop {
 	padding: 10vh;
 	background-color: blue;
-	position: absolute;
+}
+
+drag-drop[unescapable="true"] {
+	padding: 10vh;
+	background-color: red;
 }

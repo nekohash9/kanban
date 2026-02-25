@@ -9,32 +9,52 @@ class HTMLDragDropElement extends HTMLElement {
         super();
         this.addEventListener('mousedown', this.evMouseDown);
         this.addEventListener('mouseup', this.evMouseUp);
+        this.unescapable = false;
     }
     isDragging() {
         return _a.currentDragging == this;
     }
-    evMouseDown(e) {
+    evMouseDown(_e) {
         if (_a.currentDragging != undefined)
             return;
         console.log("Starting dragging!");
         _a.currentDragging = this;
     }
-    evMouseUp(e) {
+    evMouseUp(_e) {
         if (_a.currentDragging == undefined)
             return;
         console.log("Stopping dragging!");
         _a.currentDragging = undefined;
     }
-    onDraggign(x, y) {
+    onDragging(x, y) {
+        if (this.unescapable) {
+            const HW = this.offsetWidth / 2;
+            const HH = this.offsetHeight / 2;
+            x = Math.max(0, x - HW);
+            y = Math.max(0, y - HH);
+            x = Math.min(window.screen.width, x + HW);
+            y = Math.min(window.screen.height, y + HH);
+        }
         this.style.left = x - this.offsetWidth / 2 + 'px';
         this.style.top = y - this.offsetHeight / 2 + 'px';
+    }
+    connectedCallback() {
+        this.style.position = 'absolute';
+    }
+    attributeChangedCallback(name, _oldValue, newValue) {
+        switch (name) {
+            case 'unescapable':
+                this.unescapable = (newValue === 'true');
+                break;
+        }
     }
 }
 _a = HTMLDragDropElement, _HTMLDragDropElement_evMouseMove = function _HTMLDragDropElement_evMouseMove(e) {
     if (_a.currentDragging == undefined)
         return;
-    _a.currentDragging.onDraggign(e.pageX, e.pageY);
+    _a.currentDragging.onDragging(e.pageX, e.pageY);
 };
+HTMLDragDropElement.observedAttributes = ['unescapable'];
 (() => {
     document.addEventListener('mousemove', __classPrivateFieldGet(_a, _a, "m", _HTMLDragDropElement_evMouseMove));
 })();
