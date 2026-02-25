@@ -1,9 +1,11 @@
 drag-drop {
-	padding: 10vh;
+	width: 100px;
+	height: 100px;
 	background-color: blue;
 }
 
 drag-drop[unescapable="true"] {
-	padding: 10vh;
+	width: 100px;
+	height: 100px;
 	background-color: red;
 }

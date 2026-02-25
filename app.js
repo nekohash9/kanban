@@ -27,19 +27,21 @@ class HTMLDragDropElement extends HTMLElement {
         _a.currentDragging = undefined;
     }
     onDragging(x, y) {
+        const HW = this.offsetWidth / 2;
+        const HH = this.offsetHeight / 2;
         if (this.unescapable) {
-            const HW = this.offsetWidth / 2;
-            const HH = this.offsetHeight / 2;
-            x = Math.max(0, x - HW);
-            y = Math.max(0, y - HH);
-            x = Math.min(window.screen.width, x + HW);
-            y = Math.min(window.screen.height, y + HH);
+            x = Math.max(HW, x);
+            y = Math.max(HH, y);
+            x = Math.min(window.innerWidth - HW, x);
+            y = Math.min(window.innerHeight - HH, y);
         }
-        this.style.left = x - this.offsetWidth / 2 + 'px';
-        this.style.top = y - this.offsetHeight / 2 + 'px';
+        this.style.left = x - HW + 'px';
+        this.style.top = y - HH + 'px';
     }
     connectedCallback() {
         this.style.position = 'absolute';
+        this.style.userSelect = 'none';
+        this.draggable = false;
     }
     attributeChangedCallback(name, _oldValue, newValue) {
         switch (name) {
@@ -52,6 +54,10 @@ class HTMLDragDropElement extends HTMLElement {
 _a = HTMLDragDropElement, _HTMLDragDropElement_evMouseMove = function _HTMLDragDropElement_evMouseMove(e) {
     if (_a.currentDragging == undefined)
         return;
+    if (e.buttons == 0) {
+        _a.currentDragging = undefined;
+        return;
+    }
     _a.currentDragging.onDragging(e.pageX, e.pageY);
 };
 HTMLDragDropElement.observedAttributes = ['unescapable'];

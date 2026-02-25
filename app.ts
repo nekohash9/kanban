@@ -32,21 +32,25 @@ class HTMLDragDropElement extends HTMLElement {
 	}
 
 	private onDragging(x: number, y: number) {
+		const HW = this.offsetWidth / 2;
+		const HH = this.offsetHeight / 2;
+
 		if (this.unescapable) {
-			const HW = this.offsetWidth / 2;
-			const HH = this.offsetHeight / 2;
-			x = Math.max(0, x - HW);
-			y = Math.max(0, y - HH);
-			x = Math.min(window.screen.width, x + HW);
-			y = Math.min(window.screen.height, y + HH);
+			x = Math.max(HW, x);
+			y = Math.max(HH, y);
+
+			x = Math.min(window.innerWidth - HW, x);
+			y = Math.min(window.innerHeight - HH, y);
 		}
 
-		this.style.left = x - this.offsetWidth / 2 + 'px';
-		this.style.top = y - this.offsetHeight / 2 + 'px';
+		this.style.left = x - HW + 'px';
+		this.style.top = y - HH + 'px';
 	}
 
 	connectedCallback() {
 		this.style.position = 'absolute';
+		this.style.userSelect = 'none';
+		this.draggable = false;
 	}
 
 	attributeChangedCallback(name: string, _oldValue: string, newValue: string) {
@@ -59,6 +63,12 @@ class HTMLDragDropElement extends HTMLElement {
 
 	static #evMouseMove(e: MouseEvent) {
 		if (HTMLDragDropElement.currentDragging == undefined) return;
+
+		if (e.buttons == 0) {
+			HTMLDragDropElement.currentDragging = undefined;
+			return;
+		}
+
 		HTMLDragDropElement.currentDragging.onDragging(e.pageX, e.pageY);
 	}
 
