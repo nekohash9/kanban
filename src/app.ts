@@ -1,82 +1,48 @@
-
-class HTMLDragDropElement extends HTMLElement {
-	static observedAttributes = ['inescapable']; // TODO: think about a new name for attribute "inescapable"
-
-	inescapable: boolean;
-
+class HTMLWindowElement extends HTMLElement {
 	constructor() {
 		super();
-
-		this.addEventListener('mousedown', this.evMouseDown);
-		this.addEventListener('mouseup', this.evMouseUp);
-
-		this.inescapable = false;
-	}
-
-	isDragging(): boolean {
-		return HTMLDragDropElement.currentDragging == this;
-	}
-
-	private evMouseDown(_e: MouseEvent) {
-		if (HTMLDragDropElement.currentDragging != undefined) return;
-		console.log("Starting dragging!");
-
-		HTMLDragDropElement.currentDragging = this;
-	}
-
-	private evMouseUp(_e: MouseEvent) {
-		if (HTMLDragDropElement.currentDragging == undefined) return;
-		console.log("Stopping dragging!");
-
-		HTMLDragDropElement.currentDragging = undefined;
-	}
-
-	private onDragging(x: number, y: number) {
-		const HW = this.offsetWidth / 2;
-		const HH = this.offsetHeight / 2;
-
-		if (this.inescapable) {
-			x = Math.max(HW, x);
-			y = Math.max(HH, y);
-
-			x = Math.min(window.innerWidth - HW, x);
-			y = Math.min(window.innerHeight - HH, y);
-		}
-
-		this.style.left = x - HW + 'px';
-		this.style.top = y - HH + 'px';
+		this.addEventListener('mousedown', this.evOnMouseDown);
+		this.addEventListener('mouseup', this.evOnMouseUp);
 	}
 
 	connectedCallback() {
 		this.style.position = 'absolute';
 		this.style.userSelect = 'none';
-		this.draggable = false;
 	}
 
-	attributeChangedCallback(name: string, _oldValue: string, newValue: string) {
-		switch (name) {
-			case 'inescapable':
-				this.inescapable = (newValue === 'true');
-				break;
-		}
+	static #drugging?: HTMLWindowElement;
+	static #offsetX: number = 0;
+	static #offsetY: number = 0;
+
+	private evOnMouseDown(e: MouseEvent) {
+		if (HTMLWindowElement.#drugging != undefined) return;
+		console.log("dragging...");
+		HTMLWindowElement.#drugging = this;
+		HTMLWindowElement.#offsetX = (this.offsetLeft) - e.pageX;
+		HTMLWindowElement.#offsetY = (this.offsetTop) - e.pageY;
 	}
 
-	static #evMouseMove(e: MouseEvent) {
-		if (HTMLDragDropElement.currentDragging == undefined) return;
+	private evOnMouseUp(e: MouseEvent) {
+		if (HTMLWindowElement.#drugging == undefined) return;
+		HTMLWindowElement.#drugging = undefined;
+		console.log("dragged!");
 
-		if (e.buttons == 0) {
-			HTMLDragDropElement.currentDragging = undefined;
-			return;
-		}
-
-		HTMLDragDropElement.currentDragging.onDragging(e.pageX, e.pageY);
 	}
 
-	static currentDragging?: HTMLDragDropElement;
+	private processDrag(x: number, y: number) {
+		this.style.left = x + 'px';
+		this.style.top = y + 'px';
+	}
+
+	private static evMouseMove(e: MouseEvent) {
+		HTMLWindowElement.#drugging?.processDrag(e.pageX + HTMLWindowElement.#offsetX, e.pageY + HTMLWindowElement.#offsetY)
+	}
 
 	static {
-		document.addEventListener('mousemove', HTMLDragDropElement.#evMouseMove);
+		document.addEventListener('mousemove', HTMLWindowElement.evMouseMove);
 	}
+
 }
 
-window.customElements.define('drag-drop', HTMLDragDropElement);
+window.customElements.define('draggable-window', HTMLWindowElement);
+

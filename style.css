@@ -1,10 +1,4 @@
-drag-drop {
-	width: 100px;
-	height: 100px;
-	background-color: blue;
-}
-
-drag-drop[inescapable="true"] {
+draggable-window {
 	width: 100px;
 	height: 100px;
 	background-color: red;
