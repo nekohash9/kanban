@@ -5,9 +5,8 @@
 		"removeComments": true,
 		"preserveConstEnums": true,
 		"sourceMap": true,
+		"sourceRoot": "src",
+		"outDir": "dist",
 		"target": "ES2015"
-	},
-	"files": [
-		"app.ts",
-	]
+	}
 }
