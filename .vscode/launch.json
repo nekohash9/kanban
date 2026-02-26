@@ -8,7 +8,7 @@
 			"type": "chrome",
 			"request": "launch",
 			"name": "Open index.html",
-			"file": "d:\\Projects\\Web\\kaban\\index.html"
+			"file": "${workspaceFolder}/index.html"
 		}
 	]
 }
