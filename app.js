@@ -9,7 +9,7 @@ class HTMLDragDropElement extends HTMLElement {
         super();
         this.addEventListener('mousedown', this.evMouseDown);
         this.addEventListener('mouseup', this.evMouseUp);
-        this.unescapable = false;
+        this.inescapable = false;
     }
     isDragging() {
         return _a.currentDragging == this;
@@ -29,7 +29,7 @@ class HTMLDragDropElement extends HTMLElement {
     onDragging(x, y) {
         const HW = this.offsetWidth / 2;
         const HH = this.offsetHeight / 2;
-        if (this.unescapable) {
+        if (this.inescapable) {
             x = Math.max(HW, x);
             y = Math.max(HH, y);
             x = Math.min(window.innerWidth - HW, x);
@@ -45,8 +45,8 @@ class HTMLDragDropElement extends HTMLElement {
     }
     attributeChangedCallback(name, _oldValue, newValue) {
         switch (name) {
-            case 'unescapable':
-                this.unescapable = (newValue === 'true');
+            case 'inescapable':
+                this.inescapable = (newValue === 'true');
                 break;
         }
     }
@@ -60,7 +60,7 @@ _a = HTMLDragDropElement, _HTMLDragDropElement_evMouseMove = function _HTMLDragD
     }
     _a.currentDragging.onDragging(e.pageX, e.pageY);
 };
-HTMLDragDropElement.observedAttributes = ['unescapable'];
+HTMLDragDropElement.observedAttributes = ['inescapable'];
 (() => {
     document.addEventListener('mousemove', __classPrivateFieldGet(_a, _a, "m", _HTMLDragDropElement_evMouseMove));
 })();

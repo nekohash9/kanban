@@ -4,7 +4,7 @@ drag-drop {
 	background-color: blue;
 }
 
-drag-drop[unescapable="true"] {
+drag-drop[inescapable="true"] {
 	width: 100px;
 	height: 100px;
 	background-color: red;

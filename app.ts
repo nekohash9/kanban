@@ -1,8 +1,8 @@
 
 class HTMLDragDropElement extends HTMLElement {
-	static observedAttributes = ['unescapable']; // TODO: think about a new name for attribute "unescapable"
+	static observedAttributes = ['inescapable']; // TODO: think about a new name for attribute "inescapable"
 
-	unescapable: boolean;
+	inescapable: boolean;
 
 	constructor() {
 		super();
@@ -10,7 +10,7 @@ class HTMLDragDropElement extends HTMLElement {
 		this.addEventListener('mousedown', this.evMouseDown);
 		this.addEventListener('mouseup', this.evMouseUp);
 
-		this.unescapable = false;
+		this.inescapable = false;
 	}
 
 	isDragging(): boolean {
@@ -35,7 +35,7 @@ class HTMLDragDropElement extends HTMLElement {
 		const HW = this.offsetWidth / 2;
 		const HH = this.offsetHeight / 2;
 
-		if (this.unescapable) {
+		if (this.inescapable) {
 			x = Math.max(HW, x);
 			y = Math.max(HH, y);
 
@@ -55,8 +55,8 @@ class HTMLDragDropElement extends HTMLElement {
 
 	attributeChangedCallback(name: string, _oldValue: string, newValue: string) {
 		switch (name) {
-			case 'unescapable':
-				this.unescapable = (newValue === 'true');
+			case 'inescapable':
+				this.inescapable = (newValue === 'true');
 				break;
 		}
 	}
