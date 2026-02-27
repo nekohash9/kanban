@@ -7,9 +7,15 @@
 		{
 			"type": "chrome",
 			"request": "launch",
-			"name": "Open index.html",
-			"file": "${workspaceFolder}/index.html",
+			"name": "Compile&Run",
+			"file": "${workspaceFolder}/site/index.html",
 			"preLaunchTask": "Build TS"
+		},
+		{
+			"type": "chrome",
+			"request": "launch",
+			"name": "Run No Compile",
+			"file": "${workspaceFolder}/site/index.html"
 		}
 	]
 }
