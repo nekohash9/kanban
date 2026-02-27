@@ -72,18 +72,7 @@ header .buttgroup button {
 
 /* List */
 
-.card-title {
-	outline: none;
-	border: ;
-	cursor: pointer;
-	margin: 0.5rem;
-	font-size: var(--subtitle-font-size);
-	min-height: 1rem;
-	min-width: 1rem;
-	padding: 4px;
-}
-
-.lists {
+#content {
 	height: 100%;
 	margin: 2rem;
 	border-radius: 1rem;
@@ -94,7 +83,17 @@ header .buttgroup button {
 	backdrop-filter: var(--main-blur);
 }
 
-.lists div {
+#content label {
+	outline: none;
+	cursor: pointer;
+	margin: 0.5rem;
+	font-size: var(--subtitle-font-size);
+	min-height: 1rem;
+	min-width: 1rem;
+	padding: 4px;
+}
+
+#content div {
 	text-align: center;
 	margin: 0.5rem;
 	border-radius: 0.5rem;
@@ -105,7 +104,7 @@ header .buttgroup button {
 	background-color: rgb(84, 170, 255);
 }
 
-.lists div div {
+#content div div {
 	text-align: initial;
 	max-width: initial;
 	min-height: 50px;
@@ -125,4 +124,9 @@ footer {
 	width: 100%;
 	padding: 2rem;
 	background-color: white;
+}
+
+draggable {
+	position: absolute;
+	user-select: none;
 }

@@ -1,48 +1,39 @@
-class HTMLWindowElement extends HTMLElement {
-	constructor() {
-		super();
-		this.addEventListener('mousedown', this.evOnMouseDown);
-		this.addEventListener('mouseup', this.evOnMouseUp);
+const content: HTMLElement = document.getElementById('content');
+let lists: HTMLElement[] = [];
+
+
+content.childNodes.forEach((child: ChildNode, _key, _parent) => {
+	if (child.nodeType == 1) {
+		lists.push(child as HTMLElement);
 	}
+});
 
-	connectedCallback() {
-		this.style.position = 'absolute';
-		this.style.userSelect = 'none';
-	}
+document.getElementById('btn_add_list').addEventListener('click', (_e) => { addNewList() });
+document.getElementById('btn_add_task').addEventListener('click', (_e) => { addNewTask(0) });
 
-	static #drugging?: HTMLWindowElement;
-	static #offsetX: number = 0;
-	static #offsetY: number = 0;
+function addNewList() {
+	let list: HTMLDivElement = document.createElement('div');
+	let title: HTMLLabelElement = document.createElement('label');
 
-	private evOnMouseDown(e: MouseEvent) {
-		if (HTMLWindowElement.#drugging != undefined) return;
-		console.log("dragging...");
-		HTMLWindowElement.#drugging = this;
-		HTMLWindowElement.#offsetX = (this.offsetLeft) - e.pageX;
-		HTMLWindowElement.#offsetY = (this.offsetTop) - e.pageY;
-	}
+	title.contentEditable = 'plaintext-only';
+	title.textContent = 'Title';
 
-	private evOnMouseUp(e: MouseEvent) {
-		if (HTMLWindowElement.#drugging == undefined) return;
-		HTMLWindowElement.#drugging = undefined;
-		console.log("dragged!");
+	list.appendChild(title);
+	content.appendChild(list);
 
-	}
-
-	private processDrag(x: number, y: number) {
-		this.style.left = x + 'px';
-		this.style.top = y + 'px';
-	}
-
-	private static evMouseMove(e: MouseEvent) {
-		HTMLWindowElement.#drugging?.processDrag(e.pageX + HTMLWindowElement.#offsetX, e.pageY + HTMLWindowElement.#offsetY)
-	}
-
-	static {
-		document.addEventListener('mousemove', HTMLWindowElement.evMouseMove);
-	}
-
+	lists.push(list);
+	addNewTask(lists.length - 1);
 }
 
-window.customElements.define('draggable-window', HTMLWindowElement);
+function addNewTask(list_id: number = 0) {
+	const list: HTMLElement = lists[list_id];
+	let task: HTMLElement;
 
+	console.log(list);
+
+	if (list == undefined) return;
+
+	task = document.createElement('div');
+	task.textContent = 'New TASK!'
+	list.appendChild(task);
+}

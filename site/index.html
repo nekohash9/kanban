@@ -9,24 +9,26 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
 		rel="stylesheet">
 	<link rel="stylesheet" href="style.css">
-	<title>Hello, World!</title>
+	<title>Kabanana</title>
 </head>
 
 <body>
+	<script src="../dist/classes.js"></script>
+
 	<header>
 		<a href="#">KABAN</a>
 		<div class="buttgroup">
-			<button>Add list</button>
-			<button>Add Task</button>
+			<button id="btn_add_list">Add list</button>
+			<button id="btn_add_task">Add Task</button>
 			<button>button 3</button>
 			<button>button 4</button>
 			<button>button 5</button>
 		</div>
 	</header>
-	<script src="../dist/app.js"></script>
-	<div class="lists">
+
+	<div id="content">
 		<div>
-			<label class="card-title" contenteditable="plaintext-only">Title1</label>
+			<label contenteditable="plaintext-only">Title1</label>
 			<div>
 				Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos esse, error quisquam consectetur
 				mollitia accusamus corporis qui consequuntur, et, natus adipisci maiores a aliquid sit blanditiis facere
@@ -44,7 +46,7 @@
 			</div>
 		</div>
 		<div>
-			<label class="card-title" contenteditable="plaintext-only">Title2</label>
+			<label contenteditable="plaintext-only">Title2</label>
 			<div>
 				Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos esse, error quisquam consectetur
 				mollitia accusamus corporis qui consequuntur, et, natus adipisci maiores a aliquid sit blanditiis facere
@@ -64,8 +66,10 @@
 
 	</div>
 	<footer>
-		foot
+		Add content here!
 	</footer>
+
+	<script src="../dist/app.js"></script>
 </body>
 
 </html>
