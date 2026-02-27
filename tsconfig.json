@@ -6,6 +6,7 @@
 		"preserveConstEnums": true,
 		"sourceMap": true,
 		"sourceRoot": "src",
+		"rootDir": "src",
 		"outDir": "dist",
 		"target": "ES2015"
 	}
