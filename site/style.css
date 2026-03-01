@@ -24,55 +24,51 @@
 
 body {
 	background-image: url("res/temp_bliss.jpg");
-
 	background-attachment: fixed;
 	background-position: center;
 	background-size: cover;
-
 }
 
 /**/
 
 
-#contextMenu {
-	position: absolute;
-	text-align: center;
-	display: none;
-	background: white;
-	z-index: 100;
-	border-radius: 1em;
-	padding-top: 1em;
-	padding-bottom: 1em;
+.context-menu {
+    position: absolute;
+    text-align: center;
+    display: none;
+    background: white;
+    z-index: 100;
+    border-radius: 1em;
+    padding: 1em 0;  
+}
+.context-menu ul {
+    padding: 0px;
+    margin: 0px;
+    min-width: 150px;
+    list-style: none;
 }
 
-#contextMenu ul {
-	padding: 0px;
-	margin: 0px;
-	min-width: 150px;
-	list-style: none;
-}
-
-#contextMenu ul li {
+.context-menu ul li {
 	padding-bottom: 7px;
 	padding-top: 7px;
 }
 
-#contextMenu ul li a {
+.context-menu ul li a {
 	text-decoration: none;
 	color: black;
 }
 
-#contextMenu ul li:hover {
+.context-menu ul li:hover {
 	background: rgb(230, 230, 230);
 }
 
 /* Header */
 
 header {
-	display: flex;
-	background-color: white;
-	justify-content: left;
-	align-items: center;
+    display: flex;
+    background-color: white;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 header a {
@@ -87,7 +83,6 @@ header a {
 header .buttgroup {
 	display: flex;
 	flex-grow: 1;
-
 	list-style: none;
 }
 
@@ -114,57 +109,52 @@ header button {
 }
 
 header button:hover {
-	background-image: linear-gradient(to top, rgb(223, 248, 255), white);
-	cursor: pointer;
-	transition: 0.25s;
-
-	border-bottom-color: #1a4cef;
+    background-image: linear-gradient(to top, rgb(223, 248, 255), white);
+    cursor: pointer;
+    border-bottom-color: #1a4cef;
 }
 
 /* List */
 
-#content {
-	height: 100%;
-	margin: 2rem;
-	border-radius: 1rem;
-	display: flex;
-	gap: 20px;
-	justify-content: center;
-	background-color: var(--main-white);
-	backdrop-filter: var(--main-blur);
+.content {
+    border-radius: 1rem;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    background-color: var(--main-white);
+    backdrop-filter: var(--main-blur);
+	padding: 2em;
 }
 
-#content label {
-	outline: none;
-	cursor: pointer;
-	margin: 0.5rem;
-	font-size: var(--subtitle-font-size);
-	min-height: 1rem;
-	min-width: 1rem;
-	padding: 4px;
+.content label {
+    outline: none;
+    cursor: pointer;
+    margin: 0.5rem;
+    font-size: var(--subtitle-font-size);
+    min-height: 1rem;
+    min-width: 1rem;
+    padding: 4px;
 }
 
-#content div {
-	text-align: center;
-	margin: 0.5rem;
-	border-radius: 0.5rem;
-	padding: 0.5rem;
-
-	flex-grow: 1;
-	max-width: 25%;
-	background-color: rgb(84, 170, 255);
+.kanban-list {
+    text-align: center;
+    margin: 0.5rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    flex-grow: 1;
+    max-width: 25%;
+    background-color: rgb(84, 170, 255);
 }
 
-#content div div {
-	text-align: initial;
-	max-width: initial;
-	min-height: 50px;
-	margin: 0.5rem;
-	border-radius: 0.5rem;
-	padding: 0.5rem;
-	background-color: rgb(178, 217, 255);
-	cursor: pointer;
-	user-select: none;
+.kanban-card {
+    text-align: initial;
+    min-height: 50px;
+    margin: 0.5rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    background-color: rgb(178, 217, 255);
+    cursor: pointer;
+    user-select: none;
 }
 
 /* Footer */
