@@ -37,3 +37,24 @@ function addNewTask(list_id: number = 0) {
 	task.textContent = 'New TASK!'
 	list.appendChild(task);
 }
+
+
+//
+
+const contextMenu: HTMLElement = document.getElementById("contextMenu");
+
+document.addEventListener('click', hideMenu);
+document.addEventListener('contextmenu', rightClick);
+
+function hideMenu(_e: Event) {
+	contextMenu.style.display = 'none';
+}
+
+function rightClick(e: MouseEvent) {
+	e.preventDefault();
+
+	contextMenu.style.display = 'block';
+	contextMenu.style.left = e.pageX + 'px';
+	contextMenu.style.top = e.pageY + 'px';
+}
+
