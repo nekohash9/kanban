@@ -33,19 +33,20 @@ body {
 
 
 .context-menu {
-    position: absolute;
-    text-align: center;
-    display: none;
-    background: white;
-    z-index: 100;
-    border-radius: 1em;
-    padding: 1em 0;  
+	position: absolute;
+	text-align: center;
+	display: none;
+	background: white;
+	z-index: 100;
+	border-radius: 1em;
+	padding: 1em 0;
 }
+
 .context-menu ul {
-    padding: 0px;
-    margin: 0px;
-    min-width: 150px;
-    list-style: none;
+	padding: 0px;
+	margin: 0px;
+	min-width: 150px;
+	list-style: none;
 }
 
 .context-menu ul li {
@@ -65,16 +66,17 @@ body {
 /* Header */
 
 header {
-    display: flex;
-    background-color: white;
-    justify-content: flex-start;
-    align-items: center;
+	display: flex;
+	background-color: white;
+	justify-content: flex-start;
+	align-items: center;
 }
 
-header a {
+.title {
 	font-size: var(--title-font-size);
 	font-weight: bolder;
-	color: black;
+	/*If we are kabanana why not yellowish?*/
+	color: goldenrod;
 	text-decoration: none;
 	padding-left: 2rem;
 	padding-right: 2rem;
@@ -109,52 +111,56 @@ header button {
 }
 
 header button:hover {
-    background-image: linear-gradient(to top, rgb(223, 248, 255), white);
-    cursor: pointer;
-    border-bottom-color: #1a4cef;
+	background-image: linear-gradient(to top, rgb(223, 248, 255), white);
+	cursor: pointer;
+	border-bottom-color: #1a4cef;
 }
 
 /* List */
 
 .content {
-    border-radius: 1rem;
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    background-color: var(--main-white);
-    backdrop-filter: var(--main-blur);
+	border-radius: 1rem;
+	display: flex;
+	gap: 20px;
+	justify-content: center;
+	background-color: var(--main-white);
+	backdrop-filter: var(--main-blur);
 	padding: 2em;
 }
 
 .content label {
-    outline: none;
-    cursor: pointer;
-    margin: 0.5rem;
-    font-size: var(--subtitle-font-size);
-    min-height: 1rem;
-    min-width: 1rem;
-    padding: 4px;
+	outline: none;
+	cursor: pointer;
+	margin: 0.5rem;
+	font-size: var(--subtitle-font-size);
+	min-height: 1rem;
+	min-width: 1rem;
+	padding: 4px;
 }
 
 .kanban-list {
-    text-align: center;
-    margin: 0.5rem;
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-    flex-grow: 1;
-    max-width: 25%;
-    background-color: rgb(84, 170, 255);
+	text-align: center;
+	margin: 0.5rem;
+	border-radius: 0.5rem;
+	padding: 0.5rem;
+	flex-grow: 1;
+	max-width: 25%;
+	background-color: rgb(84, 170, 255);
 }
 
 .kanban-card {
-    text-align: initial;
-    min-height: 50px;
-    margin: 0.5rem;
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-    background-color: rgb(178, 217, 255);
-    cursor: pointer;
-    user-select: none;
+	text-align: initial;
+	min-height: 50px;
+	margin: 0.5rem;
+	border-radius: 0.5rem;
+	padding: 0.5rem;
+	background-color: rgb(178, 217, 255);
+	cursor: pointer;
+	user-select: none;
+}
+
+.dragging {
+	opacity: 0.6;
 }
 
 /* Footer */

@@ -38,8 +38,80 @@ function addNewTask(list_id: number = 0) {
 	list.appendChild(task);
 }
 
+// Moving cards
 
-//
+let draggingCard: HTMLElement | null = null;
+
+document.querySelectorAll('.kanban-card').forEach(
+	(el: HTMLElement) => {
+		el.draggable = true;
+	}
+)
+
+document.querySelectorAll('.kanban-list').forEach(
+	(el: HTMLElement) => {
+		el.addEventListener('dragstart', (e: DragEvent) => {
+			if (draggingCard != null) return;
+
+			const target: HTMLElement = e.target as HTMLElement;
+
+			if (target && target.classList.contains('kanban-card')) {
+				target.classList.add('dragging');
+				draggingCard = target;
+			}
+		});
+		el.addEventListener('dragend', (e: DragEvent) => {
+			const target: HTMLElement = e.target as HTMLElement;
+			if (target == draggingCard) {
+				target.classList.remove('dragging');
+				draggingCard = null;
+			}
+		});
+
+		el.addEventListener('dragover', (e: DragEvent) => {
+			e.preventDefault();
+			const afterElement: HTMLElement = getCardAfter(el, e.pageY);
+
+			document.querySelectorAll('.kanban-card')
+				.forEach(
+					el => el.classList.remove('over')
+				);
+
+
+			if (afterElement && draggingCard) {
+				el.insertBefore(draggingCard, afterElement);
+			} else if (draggingCard) {
+				el.appendChild(draggingCard);
+			}
+		});
+	}
+)
+
+type _SearchElem = {
+	offset: number;
+	element?: HTMLElement;
+};
+
+const _NullElem: _SearchElem = {
+	offset: Number.NEGATIVE_INFINITY,
+	element: null,
+}
+
+function getCardAfter(cont: HTMLElement, y: number): HTMLElement | null {
+	const items: HTMLElement[] = Array.prototype.slice.call(cont.querySelectorAll<HTMLElement>
+		('.kanban-card:not(.dragging')) as HTMLElement[];
+
+	return items.reduce((closest: _SearchElem, child: HTMLElement) => {
+		const bbox: DOMRect = child.getBoundingClientRect();
+		const offset: number = y - bbox.top - bbox.height / 2;
+		if (offset < 0 && offset > closest.offset) {
+			return { offset, element: child };
+		}
+		return closest;
+	}, _NullElem).element;
+}
+
+// Context menu
 
 const contextMenu: HTMLElement = document.getElementById("contextMenu");
 
@@ -57,4 +129,3 @@ function rightClick(e: MouseEvent) {
 	contextMenu.style.left = e.pageX + 'px';
 	contextMenu.style.top = e.pageY + 'px';
 }
-
