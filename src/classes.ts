@@ -40,7 +40,7 @@ class HTMLDraggableElement extends HTMLElement {
 	}
  
 }
-
+ 
 window.customElements.define('draggable-element', HTMLDraggableElement);
 
 export type cardKanban = {

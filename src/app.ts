@@ -36,7 +36,7 @@ function addNewTask(list_id: number = 0) {
 	task = document.createElement('div');
 	task.textContent = 'New TASK!'
 	list.appendChild(task);
-}
+} 
 
  
 //
