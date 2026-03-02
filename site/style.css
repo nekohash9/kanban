@@ -136,7 +136,7 @@ header button:hover {
     padding: 4px;
 }
 
-.kanban-list {
+.kanban__list {
     text-align: center;
     margin: 0.5rem;
     border-radius: 0.5rem;
@@ -146,7 +146,14 @@ header button:hover {
     background-color: rgb(84, 170, 255);
 }
 
-.kanban-card {
+.kanban__title--wrapper {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	padding: .25rem;
+	align-items: center;
+}
+
+.kanban__card {
     text-align: initial;
     min-height: 50px;
     margin: 0.5rem;

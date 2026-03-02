@@ -13,9 +13,9 @@ document.getElementById('btn_add_task').addEventListener('click', (_e) => { addN
 
 function addNewList() {
 	let list: HTMLDivElement = document.createElement('div');
-	let title: HTMLLabelElement = document.createElement('label');
+	let title: HTMLLabelElement = document.createElement('h2');
 
-	title.contentEditable = 'plaintext-only';
+	title.contentEditable = 'true';
 	title.textContent = 'Title';
 
 	list.appendChild(title);

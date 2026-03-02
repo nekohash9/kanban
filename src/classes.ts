@@ -43,3 +43,17 @@ class HTMLDraggableElement extends HTMLElement {
 
 window.customElements.define('draggable-element', HTMLDraggableElement);
 
+export type cardKanban = {
+	id: string,
+	text: string,
+}
+
+export type columndKanban = {
+	id: string,
+	title: string, 
+	cards: cardKanban[]
+}
+export class Card {
+	constructor(public id: string, public text: string) {}
+	//todo localstorage saving
+}
