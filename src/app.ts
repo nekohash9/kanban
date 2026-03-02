@@ -38,7 +38,7 @@ function addNewTask(list_id: number = 0) {
 	list.appendChild(task);
 }
 
-
+ 
 //
 
 const contextMenu: HTMLElement = document.getElementById("contextMenu");

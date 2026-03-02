@@ -38,7 +38,7 @@ class HTMLDraggableElement extends HTMLElement {
 	static {
 		document.addEventListener('mousemove', HTMLDraggableElement.evMouseMove);
 	}
-
+ 
 }
 
 window.customElements.define('draggable-element', HTMLDraggableElement);
