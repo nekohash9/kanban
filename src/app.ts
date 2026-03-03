@@ -39,7 +39,7 @@ function addNewTask(list_id: number = 0) {
   task.classList.add("kanban-card");
   task.draggable = true;
   task.textContent = "New TASK!";
-  el.appendChild(task);
+  el.appendChild(task); 
   console.log(el);
 }
 
