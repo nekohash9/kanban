@@ -10,20 +10,19 @@ class HTMLDraggableElement extends HTMLElement {
 		this.style.userSelect = 'none';
 	}
 
-	static #drugging?: HTMLDraggableElement;
+	static #dragging?: HTMLDraggableElement;
 	static #offsetX: number = 0;
 	static #offsetY: number = 0;
 
 	private evOnMouseDown(e: MouseEvent) {
-		if (HTMLDraggableElement.#drugging != undefined) return;
-		HTMLDraggableElement.#drugging = this;
+		if (HTMLDraggableElement.#dragging != undefined) return;
+		HTMLDraggableElement.#dragging = this;
 		HTMLDraggableElement.#offsetX = (this.offsetLeft) - e.pageX;
 		HTMLDraggableElement.#offsetY = (this.offsetTop) - e.pageY;
 	}
 
-	private evOnMouseUp(e: MouseEvent) {
-		if (HTMLDraggableElement.#drugging == undefined) return;
-		HTMLDraggableElement.#drugging = undefined;
+	private evOnMouseUp(_e: MouseEvent) {
+		HTMLDraggableElement.#dragging = undefined;
 	}
 
 	private processDrag(x: number, y: number) {
@@ -32,7 +31,7 @@ class HTMLDraggableElement extends HTMLElement {
 	}
 
 	private static evMouseMove(e: MouseEvent) {
-		HTMLDraggableElement.#drugging?.processDrag(e.pageX + HTMLDraggableElement.#offsetX, e.pageY + HTMLDraggableElement.#offsetY)
+		HTMLDraggableElement.#dragging?.processDrag(e.pageX + HTMLDraggableElement.#offsetX, e.pageY + HTMLDraggableElement.#offsetY)
 	}
 
 	static {
