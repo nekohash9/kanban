@@ -13,8 +13,9 @@
 }
 
 
+
 * {
-	font-family: "Roboto", sans-serif;
+	font-family: "JetBrains Mono", monospace;
 	font-size: var(--text-font-size);
 	margin: 0;
 	padding: 0;

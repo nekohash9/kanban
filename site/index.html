@@ -1,86 +1,98 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Kabanana</title>
+  </head>
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-		rel="stylesheet">
-	<link rel="stylesheet" href="style.css">
-	<title>Kabanana</title>
-</head>
+  <body>
+    <!-- <div id="contextMenu" , class="contex" , style="display: none">
+      <ul>
+        <li><a href="#">Option 1</a></li>
+        <li><a href="#">Option 2</a></li>
+        <li><a href="#">Option 3</a></li>
+        <li><a href="#">Option 4</a></li>   <--- это зачем ваще 
+      </ul>
+    </div> -->
 
-<body>
-	<script src="../dist/classes.js"></script>
+    <header>
+      <a href="#">KABANANA</a>
+      <ul class="buttgroup">
+        <li><button id="btn_add_list">Add list</button></li>
+        <li><button id="btn_add_task">Add task</button></li>
+        <li><button>button 3</button></li>
+        <li><button>button 3</button></li>
+        <li><button>button 3</button></li>
+      </ul>
+    </header>
 
-	<div id="contextMenu" , class="contex" , style="display:none">
-		<ul>
-			<li><a href="#">Option 1</a></li>
-			<li><a href="#">Option 2</a></li>
-			<li><a href="#">Option 3</a></li>
-			<li><a href="#">Option 4</a></li>
+    <div id="content" class="content">
+      <div class="kanban__list" id="board">
+        <h2
+          contenteditable="true"
+          class="kanban__title--wrapper"
+          id="title-card"
+        >
+          Title1
+        </h2>
+        <div class="kanban__card">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
+          esse, error quisquam consectetur mollitia accusamus corporis qui
+          consequuntur, et, natus adipisci maiores a aliquid sit blanditiis
+          facere voluptates excepturi fuga!
+        </div>
+        <div class="kanban__card">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
+          esse, error quisquam consectetur mollitia accusamus corporis qui
+          consequuntur, et, natus adipisci maiores a aliquid sit blanditiis
+          facere voluptates excepturi fuga!
+        </div>
+        <div class="kanban__card">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
+          esse, error quisquam consectetur mollitia accusamus corporis qui
+          consequuntur, et, natus adipisci maiores a aliquid sit blanditiis
+          facere voluptates excepturi fuga!
+        </div>
+      </div>
+      <div class="kanban__list">
+        <h2
+          contenteditable="true"
+          class="kanban__title--wrapper"
+          id="title-card"
+        >
+          Title2
+        </h2>
+        <div class="kanban__card">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
+          esse, error quisquam consectetur mollitia accusamus corporis qui
+          consequuntur, et, natus adipisci maiores a aliquid sit blanditiis
+          facere voluptates excepturi fuga!
+        </div>
+        <div class="kanban__card">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
+          esse, error quisquam consectetur mollitia accusamus corporis qui
+          consequuntur, et, natus adipisci maiores a aliquid sit blanditiis
+          facere voluptates excepturi fuga!
+        </div>
+        <div class="kanban__card">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
+          esse, error quisquam consectetur mollitia accusamus corporis qui
+          consequuntur, et, natus adipisci maiores a aliquid sit blanditiis
+          facere voluptates excepturi fuga!
+        </div>
+      </div>
+    </div>
+    <footer>Add content here!</footer>
 
-		</ul>
-	</div>
-
-	<header>
-		<a href="#">KABANANA</a>
-		<ul class="buttgroup">
-			<li><button id="btn_add_list">Add list</button></li>
-			<li><button id="btn_add_task">Add task</button></li>
-			<li><button>button 3</button></li>
-			<li><button>button 3</button></li>
-			<li><button>button 3</button></li>
-		</ul>
-	</header> 
- 
-
-
-	<div id="content" class="content">
-		<div class="kanban__list" id="board">
-			<h2 contenteditable="true" class="kanban__title--wrapper" id="title-card">Title1</h2>
-			<div class="kanban__card">
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos esse, error quisquam consectetur
-				mollitia accusamus corporis qui consequuntur, et, natus adipisci maiores a aliquid sit blanditiis facere
-				voluptates excepturi fuga!
-			</div>
-			<div class="kanban__card">
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos esse, error quisquam consectetur
-				mollitia accusamus corporis qui consequuntur, et, natus adipisci maiores a aliquid sit blanditiis facere
-				voluptates excepturi fuga!
-			</div>
-			<div class="kanban__card">
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos esse, error quisquam consectetur
-				mollitia accusamus corporis qui consequuntur, et, natus adipisci maiores a aliquid sit blanditiis facere
-				voluptates excepturi fuga!
-			</div>
-		</div>
-		<div class="kanban__list">
-			<h2 contenteditable="true" class="kanban__title--wrapper" id="title-card">Title2</h2>
-			<div class="kanban__card">
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos esse, error quisquam consectetur
-				mollitia accusamus corporis qui consequuntur, et, natus adipisci maiores a aliquid sit blanditiis facere
-				voluptates excepturi fuga!
-			</div>
-			<div class="kanban__card">
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos esse, error quisquam consectetur
-				mollitia accusamus corporis qui consequuntur, et, natus adipisci maiores a aliquid sit blanditiis facere
-				voluptates excepturi fuga!
-			</div>
-			<div class="kanban__card">
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos esse, error quisquam consectetur
-				mollitia accusamus corporis qui consequuntur, et, natus adipisci maiores a aliquid sit blanditiis facere
-				voluptates excepturi fuga!
-			</div>
-		</div>
-	</div>
-	<footer>
-		Add content here!
-	</footer>
-
-	<script src="../dist/app.js"></script>
-</body>
-
+    <script src="../dist/app.js"></script>
+    <script src="../dist/classes.js"></script>
+  </body>
 </html>
