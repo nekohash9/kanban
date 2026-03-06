@@ -163,15 +163,6 @@ header button:hover {
 	opacity: 0.6;
 }
 
-/* Footer */
-
-footer {
-	position: fixed;
-	bottom: 0;
-	width: 100%;
-	padding: 2rem;
-	background-color: white;
-}
 
 draggable {
 	position: absolute;
